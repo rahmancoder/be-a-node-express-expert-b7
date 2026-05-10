@@ -4,6 +4,8 @@ import type { IProduct } from "../types/product.type";
 import { parseBody } from "../utility/parseBody";
 import { sendResponse } from "../utility/sendResponse";
 
+
+
 export const productController = async (
   req: IncomingMessage,
   res: ServerResponse,
@@ -14,13 +16,17 @@ export const productController = async (
 
   const urlParts = url?.split("/");
   // console.log(urlParts);
-  const id =
-    urlParts && urlParts[1] === "products" ? Number(urlParts[2]) : null;
+  const id = urlParts && urlParts[1] === "products" ? Number(urlParts[2]) : null;
   // console.log("This is the acutal id : ", id);
 
   // Get All Products
-  if (url === "/products" && method === "GET") {
-    try {
+  if (url === "/products" && method === "GET") 
+  {
+    // try...catch block cause throw error if garbage route hit
+    // Otherwise server will crash
+
+    try 
+    {
       const products = readProduct();
 
       return sendResponse(
@@ -30,16 +36,28 @@ export const productController = async (
         "Products retrived succeefully",
         products,
       );
-    } catch (error) {
+    } 
+    
+    catch (error) 
+    {
       return sendResponse(res, 500, false, "Something went wrong!", error);
     }
-  } else if (method === "GET" && id !== null) {
-    try {
+
+  } 
+
+  // find by ID an single product at a time 
+  else if (method === "GET" && id !== null) 
+    {
+    // try...catch block to handle the route properly  
+
+    try 
+    {
       // Get Single Product
       const products = readProduct(); // [{}]
 
       const product = products.find((p: IProduct) => p.id === id); // id === id
-      if (!product) {
+      if (!product) 
+      {
         return sendResponse(res, 404, false, "Product not found!");
       }
 
@@ -50,37 +68,55 @@ export const productController = async (
         "Product retrived succeefully",
         products,
       );
-    } catch (error) {
+    } 
+    
+    catch (error) 
+    {
       return sendResponse(res, 500, false, "Something went wrong!", error);
     }
-  } else if (method === "POST" && url === "/products") {
+
+  } 
+  
+  else if (method === "POST" && url === "/products") 
+  {
     // Created Product by Post Method
     const body = await parseBody(req);
     // console.log("Body", body);
     const products = readProduct(); // [{},{},{}]
+    
+
     const newProduct = {
       id: Date.now(),
       ...body,
     };
+
     // console.log(newProduct);
     products.push(newProduct); // [{},{},{},{new}]
     // console.log(products);
     insertProduct(products);
+
     res.writeHead(200, { "content-type": "application/json" });
+    
     res.end(
       JSON.stringify({
         message: "Product created succeefully",
         data: newProduct,
       }),
     );
-  } else if (method === "PUT" && id !== null) {
+  } 
+
+
+  else if (method === "PUT" && id !== null) 
+  {
     // Updated product by PUT method
     const body = await parseBody(req);
     const products = readProduct();
 
     const index = products.findIndex((p: IProduct) => p.id === id);
     // console.log(index);
-    if (index < 0) {
+    
+    if (index < 0) 
+    {
       res.writeHead(404, { "content-type": "application/json" });
       res.end(
         JSON.stringify({
@@ -102,10 +138,17 @@ export const productController = async (
         data: products[index],
       }),
     );
-  } else if (method === "DELETE" && id !== null) {
+
+  } 
+
+  // DELETE OPERATION
+  else if (method === "DELETE" && id !== null) 
+  {
     const products = readProduct();
     const index = products.findIndex((p: IProduct) => p.id === id);
-    if (index < 0) {
+
+    if (index < 0) 
+    {
       res.writeHead(404, { "content-type": "application/json" });
       res.end(
         JSON.stringify({
@@ -122,7 +165,9 @@ export const productController = async (
     products.splice(index, 1);
     // console.log(products);
     insertProduct(products);
+
     res.writeHead(200, { "content-type": "application/json" });
+    
     res.end(
       JSON.stringify({
         message: "Product deleted successfully!",
