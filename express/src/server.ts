@@ -15,9 +15,21 @@ app.use(express.json());
 app.use(express.text());
 app.use(express.urlencoded({ extended: true }));
 
+// Without Confugyration file
+
 const pool = new Pool({
-  connectionString: config.connection_string,
+  connectionString: "postgresql://neondb_owner:BolboNA_BolboNA_BolboNA_BolboNA_channel_binding=require",
 });
+
+// After Database connection
+// Table Created successfully
+// Update Delete Create Get , Single user by ID
+
+
+// Configuration file added for connection string from database
+// const pool = new Pool({
+//   connectionString: config.connection_string,
+// });
 
 const initDB = async () => {
   try {
