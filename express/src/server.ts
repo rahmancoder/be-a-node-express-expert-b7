@@ -6,6 +6,8 @@ import express, {
 import { Pool } from "pg";
 import config from "./config";
 
+// Module 7 Working with Express and MongoDB
+ 
 const app: Application = express();
 const port = config.port;
 
