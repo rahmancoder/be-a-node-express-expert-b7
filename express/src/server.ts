@@ -7,7 +7,7 @@ import { Pool } from "pg";
 import config from "./config";
 
 // Module 7 Working with Express and MongoDB
- 
+
 const app: Application = express();
 const port = config.port;
 
@@ -203,6 +203,13 @@ app.delete("/api/users/:id", async (req: Request, res: Response) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+// Without Config File
+
+app.listen(5000, () => {
+  console.log(`Example app listening on port on 5000`);
 });
+
+// Config file added
+// app.listen(port, () => {
+//   console.log(`Example app listening on port ${port}`);
+// });
