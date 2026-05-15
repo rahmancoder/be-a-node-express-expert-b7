@@ -2,6 +2,8 @@ import app from "./app";
 import config from "./config";
 import { initDB } from "./db";
 
+// Design Pattern 
+// MVC = Model , View , Controller
 const main = () => {
   initDB();
   app.listen(config.port, () => {
