@@ -3,11 +3,13 @@ import { authService } from "./auth.service";
 
 const loginUser = async (req: Request, res: Response) => {
   try {
+
+    // authService is returning promise where accessToken type is any
     const result = await authService.loginUserIntoDB(req.body);
 
     res.status(200).json({
       success: true,
-      message: "User retrived successfully!",
+      message: "User Login successfully!",
       data: result,
     });
   } catch (error: any) {
