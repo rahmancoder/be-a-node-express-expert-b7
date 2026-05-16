@@ -46,6 +46,7 @@ const getAllProfile = async (req:Request, res:Response)=>
    }
 };
 
+//get Single Profile from Database
 
 const getSingleProfile =async (req:Request, res:Response)=>
 {
