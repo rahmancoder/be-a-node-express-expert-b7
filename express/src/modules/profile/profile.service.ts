@@ -24,6 +24,21 @@ const createProfileIntoDB = async (payload: any) => {
   return result;
 };
 
+
+// GET all Profiles from Database
+
+const getAllProfileFromDB = async () => {
+
+  const result =await pool.query(
+
+    `
+    SELECT * FROM profiles
+    `
+  );
+
+  return result;
+}
 export const profileService = {
   createProfileIntoDB,
+  getAllProfileFromDB,
 };
