@@ -28,7 +28,7 @@ const getAllUsers = async (req: Request, res: Response) => {
     const result = await userService.getAllUsersFromDB();
     res.status(200).json({
       success: true,
-      message: "Users retrived successfully!",
+      message: "ALL Users retrived successfully!",
       data: result.rows,
     });
   } catch (error: any) {
@@ -54,7 +54,7 @@ const getSingleUser = async (req: Request, res: Response) => {
 
     res.status(200).json({
       success: true,
-      message: "User retrived successfully!",
+      message: "Single User retrived with ID !",
       data: result.rows[0],
     });
   } catch (error: any) {

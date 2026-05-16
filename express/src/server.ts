@@ -6,9 +6,15 @@ import { initDB } from "./db";
 // MVC = Model , View , Controller
 const main = () => {
   initDB();
-  app.listen(config.port, () => {
-    console.log(`Example app listening on port ${config.port}`);
+  // Without COnfig file 
+  app.listen(8000, () => {
+    console.log(`Example app listening on port 8000`);
   });
+
+  // with config file
+  // app.listen(config.port, () => {
+  //   console.log(`Example app listening on port ${config.port}`);
+  // });
 };
 
 main();

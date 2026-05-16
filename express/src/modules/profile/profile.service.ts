@@ -29,15 +29,12 @@ const createProfileIntoDB = async (payload: any) => {
 
 const getAllProfileFromDB = async () => {
 
-  const result =await pool.query(
-
-    `
-    SELECT * FROM profiles
-    `
+  const result =await pool.query(`
+    SELECT * FROM profiles `
   );
+return result;
+};
 
-  return result;
-}
 export const profileService = {
   createProfileIntoDB,
   getAllProfileFromDB,
