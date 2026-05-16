@@ -19,6 +19,7 @@ const createProfile = async (req: Request, res: Response) => {
   }
 };
 
+// get all profiles from database
 
 const getAllProfile = async (req:Request, res:Response)=>
 {
@@ -58,14 +59,95 @@ const getSingleProfile =async (req:Request, res:Response)=>
     // implement logic for result now if id match found what will be the response 
     // what if , if the id match not found, write response logic here
 
+    if(result.rows.length===0)
+    {
+      res.status(404).json(
+        {
+          success:false,
+          message:"Not Found",
+          data:{}
+        }
+      );
+    }
+
+    res.status(201).json(
+      {
+        success:true,
+        message:"single Profile retrieved",
+        data: result.rows[0],
+      }
+
+    );
+
   } 
   catch (error:any) {
     
+    res.status(500).json(
+
+      {
+        success:false,
+        message:"something went wrong",
+        error:error, 
+      }
+    );
   }
 
 }
+
+// 
+const updateProfile =async(req:Request, res:Response)=>{
+
+  const {id} = req.params;
+ 
+  // sending 2 parameters , 1. full object 2. id getting from req.params from client
+  const result= await profileService.updateProfileIntoDB(req.body, id as string);
+  try{
+
+    // logic comes here
+
+    if(result.rows.length===0)
+    {
+       res.status(404).json(
+        {
+          success:false,
+          message:"Not Found",
+          data:{},
+        }
+       );
+    }
+
+    res.status(201).json(
+
+      {
+        success:true,
+        message:"Profile Updated Successfully",
+        data:result.rows[0],
+      }
+    );
+
+
+  }
+
+  catch(error:any)
+  {
+    res.status(500).json(
+      {
+        success:false,
+        message:"something wrong",
+        error:error,
+
+      }
+    );
+
+  }
+
+
+
+}
+
 export const profileController = {
   createProfile,
   getAllProfile,
   getSingleProfile,
+  updateProfile,
 };

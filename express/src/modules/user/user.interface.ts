@@ -1,7 +1,7 @@
 export interface IUser {
-  name: string;
-  email: string;
-  password: string;
-  age: number;
-  is_active?: boolean;
+  name: string; //varchar
+  email: string; //varchar
+  password: string; //text
+  age: number; //int
+  is_active?: boolean; //boolean
 }

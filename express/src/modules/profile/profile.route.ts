@@ -12,4 +12,7 @@ router.get("/", profileController.getAllProfile);
 //get Single Profile from Database
 router.get("/:id", profileController.getSingleProfile);
 
+
+//Update Profile by ID
+router.put("/:id", profileController.updateProfile);
 export const profileRoute = router;
