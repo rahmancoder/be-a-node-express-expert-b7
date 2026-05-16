@@ -46,7 +46,25 @@ const getAllProfile = async (req:Request, res:Response)=>
    }
 };
 
+
+const getSingleProfile =async (req:Request, res:Response)=>
+{
+
+  const {id} =req.params;
+  try {
+    const result = await profileService.getSingleProfileFromDB(id as string);
+
+    // implement logic for result now if id match found what will be the response 
+    // what if , if the id match not found, write response logic here
+
+  } 
+  catch (error:any) {
+    
+  }
+
+}
 export const profileController = {
   createProfile,
   getAllProfile,
+  getSingleProfile,
 };
