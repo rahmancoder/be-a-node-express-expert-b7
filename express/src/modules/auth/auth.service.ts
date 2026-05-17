@@ -41,14 +41,34 @@ const loginUserIntoDB = async (payload: {
     email: user.email,
   };
 
-  const accessToken = jwt.sign(jwtpayload, config.secret as string, {
+  // With config file
+  // const accessToken = jwt.sign(jwtpayload, config.secret as string, {
+  //   expiresIn: "1d",
+  // });
+
+  // Without COnfig
+    const accessToken = jwt.sign(jwtpayload, "jakajkajkaja", {
     expiresIn: "1d",
   });
 
-  const refreshToken = jwt.sign(jwtpayload, config.refresh_secret as string, {
+
+  // With Config File
+  // const refreshToken = jwt.sign(jwtpayload, config.refresh_secret as string, {
+  //   expiresIn: "10d",
+  // });
+ 
+  //With COnfig file
+
+  //   const refreshToken = jwt.sign(jwtpayload, config.refresh_secret as string, {
+  //   expiresIn: "10d",
+  // });
+
+
+  // Without Config file
+
+  const refreshToken = jwt.sign(jwtpayload, "kfjfkajkfj", {
     expiresIn: "10d",
   });
-
   return { accessToken, refreshToken };
 };
 
@@ -56,10 +76,18 @@ const generateFreshToken = async (token: string) => {
   if (!token) {
     throw new Error("Unauthorized");
   }
+   
+  // with config file
+  // const decoded = jwt.verify(
+  //   token as string,
+  //   config.refresh_secret as string,
+  // ) as JwtPayload;
 
-  const decoded = jwt.verify(
+  // Without Config File
+
+    const decoded = jwt.verify(
     token as string,
-    config.refresh_secret as string,
+    "kfjfkajkfj",
   ) as JwtPayload;
 
   const userData = await pool.query(
@@ -87,7 +115,14 @@ const generateFreshToken = async (token: string) => {
     email: user.email,
   };
 
-  const accessToken = jwt.sign(jwtpayload, config.secret as string, {
+  // With Config File
+
+  // const accessToken = jwt.sign(jwtpayload, config.secret as string, {
+  //   expiresIn: "1d",
+  // });
+
+  // Without COnfig File
+    const accessToken = jwt.sign(jwtpayload, "jakajkajkaja", {
     expiresIn: "1d",
   });
 

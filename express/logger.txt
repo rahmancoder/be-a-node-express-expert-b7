@@ -381,3 +381,65 @@ Method -> GET - Time -> 1779018543687 - URL -> /api/users/
 Method -> POST - Time -> 1779020621335 - URL -> /api/users
 
 Method -> POST - Time -> 1779020626727 - URL -> /api/users
+
+Method -> GET - Time -> 1779046089139 - URL -> /
+
+Method -> GET - Time -> 1779046089768 - URL -> /favicon.ico
+
+Method -> GET - Time -> 1779046099209 - URL -> /api/users
+
+Method -> GET - Time -> 1779046112454 - URL -> /api/login
+
+Method -> GET - Time -> 1779046125105 - URL -> /auth/goin
+
+Method -> GET - Time -> 1779046133877 - URL -> /auth/login
+
+Method -> GET - Time -> 1779046145686 - URL -> /api/login
+
+Method -> GET - Time -> 1779046155500 - URL -> /login
+
+Method -> HEAD - Time -> 1779046290296 - URL -> /
+
+Method -> GET - Time -> 1779046438985 - URL -> /
+
+Method -> GET - Time -> 1779046448820 - URL -> /api/users
+
+Method -> GET - Time -> 1779046469794 - URL -> /api/profile
+
+Method -> GET - Time -> 1779046481296 - URL -> /api/auth
+
+Method -> GET - Time -> 1779046560774 - URL -> /login
+
+Method -> GET - Time -> 1779046574227 - URL -> /
+
+Method -> GET - Time -> 1779046587480 - URL -> /refresh-token
+
+Method -> GET - Time -> 1779046604199 - URL -> /api/auth/refresh-token
+
+Method -> GET - Time -> 1779047075476 - URL -> /
+
+Method -> GET - Time -> 1779047085838 - URL -> /api/users
+
+Method -> GET - Time -> 1779047086322 - URL -> /api/users
+
+Method -> GET - Time -> 1779047101649 - URL -> /auth/login
+
+Method -> GET - Time -> 1779047111708 - URL -> /login
+
+Method -> GET - Time -> 1779047115316 - URL -> /api/users
+
+Method -> GET - Time -> 1779047121313 - URL -> /api/profiles
+
+Method -> GET - Time -> 1779047126912 - URL -> /api/profile
+
+Method -> GET - Time -> 1779047147309 - URL -> /api/users
+
+Method -> GET - Time -> 1779047148984 - URL -> /api/users/2
+
+Method -> GET - Time -> 1779047165438 - URL -> /api/users/1
+
+Method -> GET - Time -> 1779047214610 - URL -> /auth/users
+
+Method -> GET - Time -> 1779047226817 - URL -> /auth/login
+
+Method -> GET - Time -> 1779047237842 - URL -> /auth/refresh-token
