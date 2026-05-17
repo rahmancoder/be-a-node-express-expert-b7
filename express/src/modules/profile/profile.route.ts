@@ -15,4 +15,10 @@ router.get("/:id", profileController.getSingleProfile);
 
 //Update Profile by ID
 router.put("/:id", profileController.updateProfile);
+
+
+// Delete Profile by ID
+
+router.delete("/:id", profileController.deleteProfile);
+
 export const profileRoute = router;

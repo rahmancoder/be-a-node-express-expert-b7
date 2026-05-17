@@ -94,7 +94,9 @@ const getSingleProfile =async (req:Request, res:Response)=>
 
 }
 
-// 
+
+//Update Profile by ID
+
 const updateProfile =async(req:Request, res:Response)=>{
 
   const {id} = req.params;
@@ -143,11 +145,67 @@ const updateProfile =async(req:Request, res:Response)=>{
 
 
 
+};
+
+
+
+
+
+
+// DELEte Profile by ID
+
+const deleteProfile=async(req:Request, res:Response)=>
+{
+
+  const {id} =req.params;
+
+  const result= await profileService.deleteProfileFromDB(id as string);
+try 
+{
+
+  // if(result.rows.length===0)
+ if(result.rowCount===0)
+  {
+    res.status(404).json(
+      {
+        success:false,
+        message:"Profile Not Found",
+        // data:{}, // there is no data 
+      }
+    );
+  }
+
+  res.status(200).json(
+    {
+      success:true,
+      message:"Profile deleted successfully",
+      data:{},
+    }
+  );
+  
+} 
+
+
+catch (error:any) {
+
+  res.status(500).json(
+    {
+      success:false,
+      message:"something wrong",
+      // message:error.message,
+      error:error,
+    }
+  );
 }
+
+
+
+};
 
 export const profileController = {
   createProfile,
   getAllProfile,
   getSingleProfile,
   updateProfile,
+  deleteProfile,
 };
