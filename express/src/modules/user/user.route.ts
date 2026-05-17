@@ -6,6 +6,8 @@ import { userController } from "./user.controller";
 const router = Router();
 
 router.post("/", userController.createUser);
+
+// For JWT Authentication purpose field/info ROLE added
 router.get(
   "/",
   auth(USER_ROLE.admin, USER_ROLE.agent, USER_ROLE.user),
